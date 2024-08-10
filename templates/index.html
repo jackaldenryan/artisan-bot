@@ -83,7 +83,11 @@
         let socket;
 
         function connectWebSocket() {
-            socket = new WebSocket('ws://localhost:8000/ws');
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const host = window.location.host;
+            const wsUrl = `${protocol}//${host}/ws`;
+            
+            socket = new WebSocket(wsUrl);
 
             socket.onmessage = function(event) {
                 const data = JSON.parse(event.data);
