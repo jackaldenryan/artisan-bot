@@ -1,0 +1,54 @@
+• Ava is an AI BDR (Business Development Representative) created by Artisan
+• Ava automates 80% of the work outbound sales teams do manually
+• Ava can find leads by prospecting with access to over 300M B2B leads
+• Ava enriches leads with demographic, firmographic, intent, and technographic data
+• Ava verifies email addresses of leads
+• Ava individually researches each prospect before writing emails
+• Ava sends hyper-personalized emails on behalf of sales reps
+• Ava is part of Artisan's all-in-one, AI-first outbound sales platform
+• Ava is described as the "Sales Artisan" and the first Artisan created by the company
+• Ava can automate the entire outbound workflow
+• Ava works alongside human sales teams to automate the majority of their work
+• Ava can operate in 40+ languages
+• Ava can replicate and automate the research & email writing workflows of top performers
+• Artisan is pioneering an AI Renaissance by bringing autonomous AI employees to the mainstream
+• Artisan's AI employees are called "Artisans" and are designed to integrate with human workforces
+• Artisan was founded in 2023
+• Artisan's founding team includes talent from Stanford, Oxford, Meta, and IBM
+• Artisan's vision is a world where Artisans and humans work together in symbiosis
+• Ava uses AI-powered automation for follow-ups with leads
+• Ava will soon be able to do outreach on LinkedIn and other social media platforms (feature in development)
+• A dialer feature is being built to allow Ava to assist with cold calling and outreach
+• Ava will be able to listen in on calls, take real-time notes, and automate follow-up calls
+• Ava works with industry-leading data providers to access accurate B2B data
+• Pricing for Ava is variable based on lead volume and customization needs
+• Ava can be set up with just a 10-minute conversation
+• Ava creates the user's Ideal Customer Profile (ICP)
+• Ava helps avoid spam filters with mailbox health monitoring, placement tests, and email warmup
+• Ava scrapes the web and social media to find insights for crafting personalized emails
+• Ava allows human SDRs to focus more on making connections and closing deals
+• Ava uses AI to analyze engagement patterns and suggest optimal messaging
+• Ava can conduct initial conversations with leads
+• Ava allows sales teams to focus on high-value interactions and complex deal-closing activities
+• Artisan offers AI-driven outreach optimization to help exceed sales targets
+• Artisan aims to replace multiple SaaS products with one consolidated platform
+• Ava can perform 24/7 mass outreach for companies
+• Ava integrates data from various sources to create a comprehensive database of potential clients
+• Ava is described as being able to generate leads at a fraction of the cost of a human BDR
+• Artisan's platform, including Ava, helped bioaccess achieve a 1.2% positive response rate in their outreach efforts
+• Artisan's products include Sales Overview, B2B Data, Sales Playbooks, Email Warmup, and Sales Automation
+• Ava is described as 10x more productive than a human, at one-tenth of the cost
+• Ava collects intent signals like job changes, personal online activity, search topics, funding events, technographic & organizational changes
+• Artisan offers an AI-driven email warmup tool to boost sender reputation and avoid spam filters
+• The email warmup tool automatically removes emails from spam folders
+• Artisan provides tailored email warmup content that is fully personalized
+• The warmup process uses real email addresses for interactions, not fake accounts
+• Artisan can customize the topic of warmup emails for specific industries
+• The tool automatically archives warmup emails to keep inboxes organized
+• Artisan performs regular mailbox health checks, including blacklist monitoring and proper settings verification
+• Ava learns from user feedback over time to improve performance
+• Ava crafts bespoke emails using a proprietary LLM pipeline combining models from Google, OpenAI, and Anthropic with in-house fine-tuned models
+• Ava can be coached to adjust tone, writing style, and content for each campaign
+• Ava is part of Artisan's AI Sales Playbooks feature
+• Ava impersonates salespeople, sending emails using their email address and incorporating on-brand messaging
+• Ava can draft email responses within the Inbox (currently in beta)

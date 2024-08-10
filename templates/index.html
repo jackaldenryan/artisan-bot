@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with Ava</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        #chat-window {
+            position: relative;
+            height: 400px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #chat-messages {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        .message {
+            max-width: 70%;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+        .user-message {
+            background-color: #e1f5fe;
+            align-self: flex-end;
+        }
+        .bot-message {
+            background-color: #f0f0f0;
+            align-self: flex-start;
+        }
+        .loading {
+            display: none;
+            align-self: center;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .loading-spinner {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <h1>Chat with Ava</h1>
+    <button id="clear-chat">Clear Chat</button>
+    <div id="chat-window">
+        <div id="chat-messages"></div>
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            <p>Thinking...</p>
+        </div>
+    </div>
+    <form id="message-form">
+        <input type="text" id="message-input" placeholder="Enter your message" required>
+        <button type="submit" id="send-button">Send</button>
+    </form>
+
+    <script>
+        const chatWindow = document.getElementById('chat-window');
+        const chatMessages = document.getElementById('chat-messages');
+        const messageForm = document.getElementById('message-form');
+        const messageInput = document.getElementById('message-input');
+        const clearChatButton = document.getElementById('clear-chat');
+        const loadingElement = document.querySelector('.loading');
+        
+        let socket;
+
+        function connectWebSocket() {
+            socket = new WebSocket('ws://localhost:8000/ws');
+
+            socket.onmessage = function(event) {
+                const data = JSON.parse(event.data);
+                hideLoading();
+                appendMessage(data.bot, 'bot');
+            };
+
+            socket.onclose = function(event) {
+                console.log('WebSocket connection closed. Reconnecting...');
+                setTimeout(connectWebSocket, 3000);
+            };
+        }
+
+        connectWebSocket();
+
+        messageForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const message = messageInput.value;
+            if (socket.readyState === WebSocket.OPEN) {
+                appendMessage(message, 'user');
+                socket.send(message);
+                messageInput.value = '';
+                showLoading();
+            } else {
+                console.error('WebSocket is not open. Message not sent.');
+                alert('Connection lost. Please try again in a moment.');
+            }
+        });
+
+        clearChatButton.addEventListener('click', function() {
+            chatMessages.innerHTML = '';
+            
+            fetch('/clear_chat', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        console.log('Chat history cleared successfully');
+                    } else {
+                        console.error('Failed to clear chat history');
+                    }
+                });
+        });
+
+        function appendMessage(message, sender) {
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', `${sender}-message`);
+            
+            // Parse the message as Markdown
+            messageElement.innerHTML = marked.parse(message);
+            
+            chatMessages.appendChild(messageElement);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function showLoading() {
+            loadingElement.style.display = 'flex';
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+
+        function hideLoading() {
+            loadingElement.style.display = 'none';
+        }
+
+        fetch('/chat_history')
+            .then(response => response.json())
+            .then(history => {
+                history.forEach(item => {
+                    appendMessage(item.user, 'user');
+                    appendMessage(item.bot, 'bot');
+                });
+            });
+    </script>
+</body>
+</html>
