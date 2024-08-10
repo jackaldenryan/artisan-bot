@@ -5,3 +5,6 @@ This is a FastAPI app with a /chat endpoint that you can chat with programmatica
 * **main.py** contains the route/endpoint definitions, and initializes the ChatProcessor
 * **chat_processor.py** defines the ChatProcessor to act like Claude 3.5 Sonnet but with a system prompt telling Claude to act like Ava, and with a prompt suffix that gives context about Ava and Artisan
 * **static and templates** contain the html and css for the UI
+
+## Deployment
+* The app is deployed here: https://artisan-bot-089345b068ca.herokuapp.com/ but a username and password are required.
